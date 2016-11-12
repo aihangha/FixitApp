@@ -23,7 +23,7 @@
 
     <!-- Angular Scripts -->
     <script src="js/app.js"></script>
-    <script src="js/addCtrl.js"></script>
+    <script src="js/addProject.js"></script>
 
     <script src="js/gservice.js"></script>
 
@@ -58,20 +58,27 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="latitude">Latitude</label>
-                            <input type="text" class="form-control" id="latitude" value="39.500" ng-model="formData.latitude" readonly>
+                            <label for="teammates">Team Mates </label>
+                            <input type="text" class="form-control" id="teammates" placeholder="Seperate list by comma," ng-model="formData.teammates" required>
                         </div>
+
                         <div class="form-group">
-                            <label for="longitude">Longitude</label>
-                            <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="formData.longitude" readonly>
+                            <label for="equipment_needed">Equipment Needed </label>
+                            <input type="text" class="form-control" id="equipment_needed" placeholder="Sickle, Chainsaw, Pruner" ng-model="formData.equipment_needed" required>
                         </div>
-                        <div>
-                        <button type="button" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-camera"></span> Camera
-                        </button>
+
+                        <div class="form-group">
+                            <label for="deadline">Expiration Date </label>
+                            <input type="text" class="form-control" id="deadline" placeholder="Sickle, Chainsaw, Pruner" ng-disabled="all" ng-model="formData.deadline" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="description">Description/Solution</label>
+                            <input type="text" class="form-control" id="description" placeholder="min. 100 words" ng-model="formData.description" required>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-info btn-block" ng-click="createUser()">Submit</button>
+                        <button type="submit" class="btn btn-success btn-block" ng-click="createProject()">Submit</button>
                     </form>
                 </div>
             </div>
