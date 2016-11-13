@@ -111,7 +111,7 @@ addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gs
 
 
                 // Refresh the map with new data
-                gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+                // gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
             })
             .error(function (data) {
                 console.log('Error: ' + data);
