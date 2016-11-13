@@ -32,16 +32,16 @@
 <div class="container">
     <div class="header">
 
-        <h3 class="text-muted">Fixit!</h3>
+        <h3 class="text-muted"><a href="/">Fixit!</a></h3>
     </div>
     <!-- Map and Side Panel -->
-    <div class="row content">
+    <div class="row">
         <!-- Google Map -->
-        <div class="col-md-7">
-            <div id="map" style="width:645px; height:645px"></div>
+        <div class="col-xs-9">
+            <div id="map" style="width:750px; height:500px"></div>
         </div>
         <!-- Side Panel -->
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <!-- Panel Title -->
                 <!--<div class="panel-heading">-->
@@ -72,6 +72,10 @@
                         </div>
                         <br>
                         <button type="submit" class="btn btn-info btn-block" ng-click="createUser()" ng-disabled="addForm.$invalid">Submit</button>
+                        <form action="/problemRecords.html">
+                            <!--<input class="btn btn-info btn-block" type="submit"  value="Community Record" />-->
+                            <a href="/problemRecords.html" class="btn btn-info btn-block"  role="button">Community record</a>
+                        </form>
                     </form>
                 </div>
             </div>

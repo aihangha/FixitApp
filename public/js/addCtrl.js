@@ -1,6 +1,8 @@
 // Creates the addCtrl Module and Controller. Note that it depends on the 'geolocation' module and service.
 var addCtrl = angular.module('addCtrl', ['geolocation', 'gservice']);
-addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gservice){
+addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gservice)
+{
+
     // Initializes Variables
     // ----------------------------------------------------------------------------
     $scope.formData = {};
@@ -23,6 +25,11 @@ addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gs
             $scope.formData.htmlverified = "WHOOOPS 0_0  This location has not been HTML Verified! ";
         });
     });
+
+    //got to record page
+    $scope.goToRecord = function() {
+        $location.path( '/problemRecords.html' );
+    };
 
     // ----------------------------------------------------------------------------
     // Creates a new user based on the form fields
@@ -52,11 +59,13 @@ addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gs
 
         // Refresh the map with new data
         gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+                $location.path('/problemRecords.html');
     })
             .error(function (data) {
                 console.log('Error: ' + data);
             });
         // Refresh the map with new data
         //gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+        //$scope.goToRecord();
     };
 });
