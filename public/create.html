@@ -24,8 +24,7 @@
     <!-- Angular Scripts -->
     <script src="js/app.js"></script>
     <script src="js/addCtrl.js"></script>;
-
-    <script src="js/addProject.js"></script>
+    <script src="js/addProject.js"></script>;
     <script src="js/gservice.js"></script>
 
 </head>
@@ -53,7 +52,7 @@
                     <form name ="addForm" novalidate>
                         <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
                         <div class="form-group">
-                            <label for="username">Problem Description </label>
+                            <label for="username">{{problemInfo}} </label>
                             <input type="text" class="form-control" id="username" value="Fallen tree branch, blocking sidewalk" required>
                         </div>
 

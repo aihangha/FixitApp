@@ -1,13 +1,13 @@
 // Creates the addCtrl Module and Controller. Note that it depends on the 'geolocation' module and service.
 var addProject = angular.module('addProject', ['geolocation', 'gservice']);
-addProject.controller('addProject', function($scope, $http,$rootScope, geolocation, gservice){
+addProject.controller('addProject', function($scope, $http,$rootScope, geolocation, gservice,myService){
     // Initializes Variables
     // ----------------------------------------------------------------------------
     $scope.formData = {};
     var coords = {};
     var lat = 0;
     var long = 0;
-
+    $scope.problemInfo = get(myService);
     // Set initial coordinates to the center of the US
 
     // Functions

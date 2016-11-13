@@ -1,6 +1,21 @@
 // Creates the addCtrl Module and Controller. Note that it depends on the 'geolocation' module and service.
-var addCtrl = angular.module('addCtrl', ['geolocation', 'gservice']);
-addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gservice)
+var addCtrl = angular.module('addCtrl', ['geolocation', 'gservice']).factory('myService', function() {
+ var savedData = {}
+ function set(data) {
+   savedData = data;
+ }
+ function get() {
+  return savedData;
+ }
+
+ return {
+  set: set,
+  get: get
+ }
+
+});
+
+addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gservice, myService)
 {
 
     // Initializes Variables
@@ -40,20 +55,34 @@ addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gs
     }).error(function(){});
 
     //function get on problem to create project
-    $scope.problemInfo = {};
     $scope.getUserForPost = function(object){
-        $scope.problemInfo = object;
-
+        myService.set(object);
     };
 
-    /////randome generate vote
-    //$randomNum = {};
-    //$scope.randomVotes = function() {
-    //    document.getElementById("demo").innerHTML = Math.floor((Math.random() * 10) + 1);
-    //};
-    //$randomNum[0] = $scope.randomVotes();
-    //$randomNum[]
+    $scope.isVoted = function(user,vote){
+        user.votes += vote;
 
+        var userData = {
+            _id : user._id,
+            username: user.username,
+            gender: user.gender,
+            age: user.age,
+            votes : user.votes,
+            favlang: user.favlang,
+            location: [user.location[0], user.location[1]],
+            htmlverified: user.htmlverified
+        };
+
+        // Saves the user data to the db
+        $http.put('/users', userData)
+            .success(function (data) {
+                console.log('Success: ' + data);
+            })
+            .error(function (data) {
+                console.log('Error: ' + data);
+            });
+
+    };
 
     // ----------------------------------------------------------------------------
     // Creates a new user based on the form fields
@@ -64,6 +93,7 @@ addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gs
             username: $scope.formData.username,
             gender: $scope.formData.gender,
             age: $scope.formData.age,
+            votes : 2,
             favlang: $scope.formData.favlang,
             location: [$scope.formData.longitude, $scope.formData.latitude],
             htmlverified: $scope.formData.htmlverified

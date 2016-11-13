@@ -48,13 +48,13 @@
                 <!--<h2 class="panel-title text-center"> <span class="glyphicon glyphicon-map-marker"></span></h2>-->
                 <!--</div>-->
                 <!-- Panel Body -->
-                <div class="panel-body">{{formData.username}}
+                <div class="panel-body">
                     <table class="table">
                         <tbody>
 
                             <tr ng-repeat="user in userInfo | orderBy: '-_id'">
-                                <td><span class="glyphicon glyphicon-chevron-up"  ng-click="isUpVoted = !isUpVoted" ></span><br><span class="glyphicon glyphicon-chevron-down"></span></td>
-                                <td>{{user.username}}<br>+ 344 votes</td>
+                                <td><span class="glyphicon glyphicon-chevron-up"  ng-click="isVoted(user,1)" ></span><br><span class="glyphicon glyphicon-chevron-down" ng-click="isVoted(user,-1)"></span></td>
+                                <td>{{user.username}}<br>{{user.votes}} votes</td>
                                 <td><a href="/create.html" ng-click="getUserForPost(user.username)"><span class="glyphicon glyphicon-plus"></span></a></td>
                             </tr>
                         </tbody>
