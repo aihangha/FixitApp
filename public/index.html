@@ -32,16 +32,16 @@
 <div class="container">
     <div class="header">
 
-        <h3 class="text-muted">Fixit!</h3>
+        <h3 class="text-muted"><a href="/">Fixit!</a></h3><b>Logged in as Peter Pan.</b>
     </div>
     <!-- Map and Side Panel -->
-    <div class="row content">
+    <div class="row">
         <!-- Google Map -->
-        <div class="col-md-7">
-            <div id="map" style="width:645px; height:645px"></div>
+        <div class="col-xs-9">
+            <div id="map" style="width:750px; height:500px"></div>
         </div>
         <!-- Side Panel -->
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <!-- Panel Title -->
                 <!--<div class="panel-heading">-->
@@ -54,7 +54,7 @@
                         <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
                         <div class="form-group">
                             <label for="username">Problem Description </label>
-                            <input type="text" class="form-control" id="username" placeholder="OldandGold" ng-model="formData.username" required>
+                            <input type="text" class="form-control" id="username" placeholder="Ex: Broken traffic light" ng-model="formData.username" required>
                         </div>
 
                         <div class="form-group">
@@ -71,7 +71,11 @@
                         </button>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-info btn-block" ng-click="createUser()">Submit</button>
+                        <button type="submit" class="btn btn-info btn-block" ng-click="createUser()" ng-disabled="addForm.$invalid">Submit</button>
+                        <form action="/problemRecords.html">
+                            <!--<input class="btn btn-info btn-block" type="submit"  value="Community Record" />-->
+                            <a href="/problemRecords.html" class="btn btn-info btn-block"  role="button">Community record</a>
+                        </form>
                     </form>
                 </div>
             </div>

@@ -6,7 +6,7 @@ var Schema      = mongoose.Schema;
 var UserSchema = new Schema({
     username: {type: String},
     gender: {type: String},
-    age: {type: Number},
+    votes: {type: Number},
     favlang: {type: String},
     location: {type: [Number]}, // [Long, Lat]
     htmlverified: String,

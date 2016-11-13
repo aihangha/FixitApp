@@ -1,6 +1,8 @@
 // Creates the addCtrl Module and Controller. Note that it depends on the 'geolocation' module and service.
 var addCtrl = angular.module('addCtrl', ['geolocation', 'gservice']);
-addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gservice){
+addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gservice)
+{
+
     // Initializes Variables
     // ----------------------------------------------------------------------------
     $scope.formData = {};
@@ -20,9 +22,38 @@ addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gs
         $scope.$apply(function(){
             $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
             $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
-            $scope.formData.htmlverified = "WHOOOPS 0_0  This location has not been HTML Verified! ";
+            $scope.formData.htmlverified = " ";
         });
     });
+
+    //got to record page
+    $scope.goToRecord = function() {
+        $location.path( '/problemRecords.html' );
+    };
+
+    // funtion get all record from db
+    // Perform an AJAX call to get all of the records in the db.
+    $http.get('/users').success(function(response){
+        $scope.userInfo = response;
+        console.log($scope.userInfo);
+
+    }).error(function(){});
+
+    //function get on problem to create project
+    $scope.problemInfo = {};
+    $scope.getUserForPost = function(object){
+        $scope.problemInfo = object;
+
+    };
+
+    /////randome generate vote
+    //$randomNum = {};
+    //$scope.randomVotes = function() {
+    //    document.getElementById("demo").innerHTML = Math.floor((Math.random() * 10) + 1);
+    //};
+    //$randomNum[0] = $scope.randomVotes();
+    //$randomNum[]
+
 
     // ----------------------------------------------------------------------------
     // Creates a new user based on the form fields
@@ -40,7 +71,6 @@ addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gs
 
         // Saves the user data to the db
         $http.post('/users', userData)
-
             .success(function (data) {
 
                 // Once complete, clear the form (except location)
@@ -50,13 +80,14 @@ addCtrl.controller('addCtrl', function($scope, $http,$rootScope, geolocation, gs
                 $scope.formData.favlang = "";
 
 
-        // Refresh the map with new data
-        gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
-    })
+                // Refresh the map with new data
+                gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+            })
             .error(function (data) {
                 console.log('Error: ' + data);
             });
         // Refresh the map with new data
         //gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+        //$scope.goToRecord();
     };
 });

@@ -23,42 +23,42 @@
 
     <!-- Angular Scripts -->
     <script src="js/app.js"></script>
-    <script src="js/addProject.js"></script>
+    <script src="js/addCtrl.js"></script>;
 
+    <script src="js/addProject.js"></script>
     <script src="js/gservice.js"></script>
 
 </head>
 <body ng-controller="addCtrl">
 <div class="container">
     <div class="header">
-
-        <h3 class="text-muted">Fixit!</h3>
+        <h3 class="text-muted"><a href="/">Fixit!</a></h3> <b>Logged in as Peter Pan.</b>
     </div>
     <!-- Map and Side Panel -->
     <div class="row content">
         <!-- Google Map -->
-        <div class="col-md-7">
+        <div class="col-md-9">
             <div id="map" style="width:645px; height:645px"></div>
         </div>
         <!-- Side Panel -->
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <!-- Panel Title -->
                 <!--<div class="panel-heading">-->
                     <!--<h2 class="panel-title text-center"> <span class="glyphicon glyphicon-map-marker"></span></h2>-->
                 <!--</div>-->
                 <!-- Panel Body -->
-                <div class="panel-body">
+                <div class="panel-body" >
                     <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
                     <form name ="addForm" novalidate>
                         <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
                         <div class="form-group">
                             <label for="username">Problem Description </label>
-                            <input type="text" class="form-control" id="username" placeholder="OldandGold" ng-model="formData.username" required>
+                            <input type="text" class="form-control" id="username" value="Fallen tree branch, blocking sidewalk" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="teammates">Team Mates </label>
+                            <label for="teammates">Teammates </label>
                             <input type="text" class="form-control" id="teammates" placeholder="Seperate list by comma," ng-model="formData.teammates" required>
                         </div>
 
@@ -68,13 +68,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="deadline">Expiration Date </label>
-                            <input type="text" class="form-control" id="deadline" placeholder="Sickle, Chainsaw, Pruner" ng-disabled="all" ng-model="formData.deadline" required>
+                            <label for="deadline">Suggest Duration</label>
+                            <input type="text" class="form-control" id="deadline" placeholder="5 days" ng-disabled="all" ng-model="formData.deadline" required>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="description">Description/Solution</label>
+                            <label for="description">Solution/Suggestion</label>
                             <input type="text" class="form-control" id="description" placeholder="min. 100 words" ng-model="formData.description" required>
                         </div>
                         <br>
